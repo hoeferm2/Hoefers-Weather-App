@@ -1,24 +1,35 @@
 var APIkey = "0fdb6a29ec3f7e341f8148d09c85898f"
-var city; ///will be defined through user input.
+var city = ""
 var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIkey;
 
-function getData() {
 
-fetch("http://api.openweathermap.org/data/2.5/weather?q=seattle&appid=0fdb6a29ec3f7e341f8148d09c85898f")
+
+{/* <input type="text" placeholder="Type something..." id="myInput">
+<button type="button" onclick="getInputValue();">Get Value</button> */}
+
+
+function getUserInput() {
+    var inputVal = document.getElementById("userInput").value;
+    event.preventDefault();
+    console.log(inputVal);
+    city = inputVal;
+    console.log(city)
+    getData()
+  }
+// "http://api.openweathermap.org/data/2.5/weather?q=seattle&appid=0fdb6a29ec3f7e341f8148d09c85898f" to get seattle
+function getData(queryURL) {
+fetch()
     .then(function (response) {
       return response.json();
-    })
-
+    }) 
+    .then(data => {
+        console.log(data)
+})
 }
 
 
-
-// // will use the users input to update the value of var city.
-// function storeUserInput() {
-//     searchBtn
-// }
 var searchBtn = document.querySelector(".btn-primary");
-// searchBtn.addEventListener("click", getData);
+searchBtn.addEventListener("click", getUserInput);
 
 
 // }

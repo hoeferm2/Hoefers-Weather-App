@@ -1,35 +1,71 @@
 var APIkey = "0fdb6a29ec3f7e341f8148d09c85898f"
-var city = ""
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIkey;
-
-
-
+// for forecast
+// var APIkey = "6c3ae50c30ffe41eae1d3672fe4eccc6"
+// api.openweathermap.org/data/2.5/forecast/daily?q=
 {/* <input type="text" placeholder="Type something..." id="myInput">
 <button type="button" onclick="getInputValue();">Get Value</button> */}
+var today = moment();
+$("#day1").text(today.format("MMM Do, YYYY"));
 
 
-function getUserInput() {
-    var inputVal = document.getElementById("userInput").value;
+function storeUserInput(event) {
     event.preventDefault();
+
+    var inputVal = document.getElementById("userInput").value;
+    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + inputVal + "&appid=" + APIkey +"&units=imperial";
     console.log(inputVal);
-    city = inputVal;
-    console.log(city)
-    getData()
-  }
-// "http://api.openweathermap.org/data/2.5/weather?q=seattle&appid=0fdb6a29ec3f7e341f8148d09c85898f" to get seattle
-function getData(queryURL) {
-fetch()
-    .then(function (response) {
-      return response.json();
-    }) 
-    .then(data => {
-        console.log(data)
-})
+    getData(queryURL)
 }
 
 
+//  "http://api.openweathermap.org/data/2.5/weather?q=seattle&appid=0fdb6a29ec3f7e341f8148d09c85898f" to get seattle
+function getData(queryURL) {
+    fetch(queryURL)
+        .then(function (response) {
+            return response.json();
+        }) 
+        .then(data => {
+            
+            console.log(data)
+
+            // document.getElementById("cityTemp").textContent = data.main.temp + "°F"
+            structureHtml(data)
+
+
+        })
+}
+
+function structureHtml(dataObj) {
+//     // document.getElementById("cityTemp").textContent = "Temperature " + dataObj.main.temp + "°F"
+//     // document.getElementById("cityHumidity").textContent = "Humidity " + dataObj.main.humidity + "%"
+//     // document.getElementById("cityWindSpeed").textContent = "Wind Speed " + dataObj.wind.speed + " mph" 
+//     // document.getElementById().textContent = dataObj.main.
+
+for(i = 0; i<5; i++){
+    document.getElementById("day" + (i+1)).innerHTML ="Date: " + Number(dataObj.list[i].dt_txt)
+    //document.getElementById()
+}
+for(i = 0; i<5; i++){
+    document.getElementById("min" + (i+1)).innerHTML = "Min: " + Number(dataObj.list[i].main.temp_min).toFixed(1)+ "°";
+    //document.getElementById()
+}
+
+for(i = 0; i<5; i++){
+    document.getElementById("max" + (i+1)).innerHTML = "Max: " + Number(dataObj.list[i].main.temp_max).toFixed(2) + "°";
+    //document.getElementById
+}
+for(i = 0; i<5; i++){
+    document.getElementById("humidity" + (i+1)).innerHTML = "Humidity: " + Number(dataObj.list[i].main.humidity).toFixed(2) + "%";
+    //document.getElementById
+}
+for(i = 0; i<5; i++){
+    document.getElementById("windSpeed" + (i+1)).innerHTML = "Wind Speed: " + Number(dataObj.list[i].wind.speed).toFixed(2) + "mph";
+    //document.getElementById
+}
+}
+
 var searchBtn = document.querySelector(".btn-primary");
-searchBtn.addEventListener("click", getUserInput);
+searchBtn.addEventListener("click", storeUserInput);
 
 
 // }

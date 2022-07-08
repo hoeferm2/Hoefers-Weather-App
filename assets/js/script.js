@@ -15,6 +15,8 @@ function storeUserInput(event) {
     var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + inputVal + "&appid=" + APIkey +"&units=imperial";
     console.log(inputVal);
     getData(queryURL)
+    var today = moment();
+    $("#day1").text(today.format("MMM Do, YYYY"));
 }
 
 
@@ -40,9 +42,9 @@ function structureHtml(dataObj) {
 //     // document.getElementById("cityHumidity").textContent = "Humidity " + dataObj.main.humidity + "%"
 //     // document.getElementById("cityWindSpeed").textContent = "Wind Speed " + dataObj.wind.speed + " mph" 
 //     // document.getElementById().textContent = dataObj.main.
-
+//TODO: Get the dates to run through a FOR LOOP
 for(i = 0; i<5; i++){
-    document.getElementById("day" + (i+1)).innerHTML ="Date: " + Number(dataObj.list[i].dt_txt)
+    document.getElementById("day" + (i+1)).innerHTML = today.format("MMM Do, YYYY")
     //document.getElementById()
 }
 for(i = 0; i<5; i++){

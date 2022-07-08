@@ -1,4 +1,4 @@
-var APIkey = "0fdb6a29ec3f7e341f8148d09c85898f"
+var APIkey = "6c3ae50c30ffe41eae1d3672fe4eccc6"
 // for forecast
 // var APIkey = "6c3ae50c30ffe41eae1d3672fe4eccc6"
 // api.openweathermap.org/data/2.5/forecast/daily?q=

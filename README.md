@@ -8,18 +8,18 @@ Our task was to create a weather forcasting platform integrating the Open weathe
 
 The user should be able to use weather platform to get a 5 day forcast of weather in multiple cities.
 
-![Search Bar](./screenshots/weather-search.jpg)
+![Search Bar](.assets/screenshots/weather-search.jpg)
 
 ## Application 
 
 The weather application that I have created functions by fetching data from the openweather API. The application is able to create a 5 day forcast with maximum and minimum temperatures. It also draws data about humidity and wind speed
 
-![Code Snippet](./screenshots/weather-code-snippit.jpg)
+![Code Snippet](.assets/screenshots/weather-code-snippit.jpg)
 # Search funciton 
 
 The applicaiton draws data from the open weather API. City input allows the user to get up to date weather information through a five day forecast. Imperial units are provided. U
 
-![Week Forcast](./screenshots/weather-data.jpg)
+![Week Forcast](.assets/screenshots/weather-data.jpg)
 
 ## 5 day forcast
 

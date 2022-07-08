@@ -12,7 +12,7 @@ function storeUserInput(event) {
     event.preventDefault();
 
     var inputVal = document.getElementById("userInput").value;
-    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + inputVal + "&appid=" + APIkey +"&units=imperial";
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + inputVal + "&appid=" + APIkey +"&units=imperial";
     console.log(inputVal);
     getData(queryURL)
     var today = moment();
